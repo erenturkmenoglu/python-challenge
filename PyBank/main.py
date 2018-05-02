@@ -1,7 +1,12 @@
 import os
 import csv
 
-filepath = input("Name of the file:")
+prompt = input("Select the file to open: (1) budget_data_1.csv or (2) budget_data_2.csv : ")
+if prompt == "1":
+    filepath = "budget_data_1.csv"
+elif prompt == "2":
+    filepath = "budget_data_2.csv"
+    pass
 
 date = []
 revenue = []
@@ -55,5 +60,6 @@ print(f'Total Revenue: ${sum}')
 print(f'Average Revenue Change: ${round(avg_revenue_change, 2)}')
 print(f'Greatest Increase in Revenue: {date[GreatestIncreaseIndex]} (${GreatestIncrease})')
 print(f'Greatest Decrease in Revenue: {date[GreatestDecreaseIndex]} (${GreatestDecrease})')
-        
+print("-----------------------------------------------")
+      
 
