@@ -4,8 +4,10 @@ import csv
 prompt = input("Select file: (1) election_data_1.csv or (2) election_data_2.csv : ")
 if prompt == "1":
     filepath = "election_data_1.csv"
+    output_path = "output_1.txt"
 elif prompt == "2":
     filepath = "election_data_2.csv"
+    output_path = "output_2.txt"
 
 candidate = []
 results = []
@@ -27,6 +29,18 @@ for x in set(candidate):
     percentage.append((candidate.count(x)/count_votes)*100)
     count_candidates += 1
 
+with open(output_path, "w", newline='') as textfile:
+    print("Election Results", file=textfile)
+    print("-----------------------------------", file=textfile)
+    print(f'Total Votes: {count_votes}', file=textfile)
+    print("-----------------------------------", file=textfile)
+    for i in range(count_candidates):
+        print(f'{results[i]}: {round(percentage[i], 2)}% ({votes[i]})', file=textfile)
+    print("-----------------------------------", file=textfile)
+    winner = results[votes.index(max(votes))]
+    print(f'Winner: {winner}', file=textfile)
+    print("-----------------------------------", file=textfile)
+
 print("Election Results")
 print("-----------------------------------")
 print(f'Total Votes: {count_votes}')
@@ -37,6 +51,3 @@ print("-----------------------------------")
 winner = results[votes.index(max(votes))]
 print(f'Winner: {winner}')
 print("-----------------------------------")
-
-        
-
