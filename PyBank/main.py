@@ -4,8 +4,10 @@ import csv
 prompt = input("Select the file to open: (1) budget_data_1.csv or (2) budget_data_2.csv : ")
 if prompt == "1":
     filepath = "budget_data_1.csv"
+    output_path = "output_1.csv"
 elif prompt == "2":
     filepath = "budget_data_2.csv"
+    output_path = "output_2.csv"
     pass
 
 date = []
@@ -53,6 +55,16 @@ for changes in change:
 
 avg_revenue_change = total_change / (count_months - 1)
 
+with open(output_path, "w", newline='') as csvfile:
+    print("Financial Analysis", file=csvfile)
+    print("-----------------------------------------------", file=csvfile)
+    print(f'Total Months: {count_months}', file=csvfile)
+    print(f'Total Revenue: ${sum}', file=csvfile)
+    print(f'Average Revenue Change: ${round(avg_revenue_change, 2)}', file=csvfile)
+    print(f'Greatest Increase in Revenue: {date[GreatestIncreaseIndex]} (${GreatestIncrease})', file=csvfile)
+    print(f'Greatest Decrease in Revenue: {date[GreatestDecreaseIndex]} (${GreatestDecrease})', file=csvfile)
+    print("-----------------------------------------------", file=csvfile)
+      
 print("Financial Analysis")
 print("-----------------------------------------------")
 print(f'Total Months: {count_months}')
@@ -62,4 +74,3 @@ print(f'Greatest Increase in Revenue: {date[GreatestIncreaseIndex]} (${GreatestI
 print(f'Greatest Decrease in Revenue: {date[GreatestDecreaseIndex]} (${GreatestDecrease})')
 print("-----------------------------------------------")
       
-
