@@ -41,13 +41,7 @@ with open(output_path, "w", newline='') as textfile:
     print(f'Winner: {winner}', file=textfile)
     print("-----------------------------------", file=textfile)
 
-print("Election Results")
-print("-----------------------------------")
-print(f'Total Votes: {count_votes}')
-print("-----------------------------------")
-for i in range(count_candidates):
-    print(f'{results[i]}: {round(percentage[i], 2)}% ({votes[i]})')
-print("-----------------------------------")
-winner = results[votes.index(max(votes))]
-print(f'Winner: {winner}')
-print("-----------------------------------")
+with open(output_path, newline='') as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=',')
+    for row in csvreader:
+        print(row)

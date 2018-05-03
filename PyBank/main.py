@@ -65,12 +65,8 @@ with open(output_path, "w", newline='') as textfile:
     print(f'Greatest Decrease in Revenue: {date[GreatestDecreaseIndex]} (${GreatestDecrease})', file=textfile)
     print("-----------------------------------------------", file=textfile)
       
-print("Financial Analysis")
-print("-----------------------------------------------")
-print(f'Total Months: {count_months}')
-print(f'Total Revenue: ${sum}')
-print(f'Average Revenue Change: ${round(avg_revenue_change, 2)}')
-print(f'Greatest Increase in Revenue: {date[GreatestIncreaseIndex]} (${GreatestIncrease})')
-print(f'Greatest Decrease in Revenue: {date[GreatestDecreaseIndex]} (${GreatestDecrease})')
-print("-----------------------------------------------")
+with open(output_path, newline='') as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=',')
+    for row in csvreader:
+        print(row)
       
